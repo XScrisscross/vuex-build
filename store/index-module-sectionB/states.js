@@ -34,11 +34,7 @@ export default {
 
   // @api:FETCH_KQ_LISTKA_DATA
   // @params:
-  listKQ_KAInfo: {
-    depid: '1',
-    timeStart: '1',
-    timeEnd: '1',
-  },
+  listKQ_KAInfo: { },
   // @result:
   listKQ_KAData: {},
 

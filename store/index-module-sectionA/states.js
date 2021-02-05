@@ -21,27 +21,11 @@ export default {
 
   // ----------breack-------------
   Atotal: {},
-  Btotal: {
-    xAxis: [],
-    DEPseries: [],
-    COMPseries: [],
-  },
+  Btotal: {},
 
-  YCtotal: {
-    xAxis: [],
-    DEPseries: [],
-    COMPseries: [],
-  },
-  QYtotal: {
-    xAxis: [],
-    DEPseries: [],
-    COMPseries: [],
-  },
-  CCtotal: {
-    xAxis: [],
-    DEPseries: [],
-    COMPseries: [],
-  },
+  YCtotal: {},
+  QYtotal: {},
+  CCtotal: {},
 
   SClist: [],
   QYlist: [],
