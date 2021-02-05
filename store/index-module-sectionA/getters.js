@@ -11,7 +11,7 @@ export default {
   seeMoreInfo: state => state.seeMoreInfo,
 
   // data
-  listAData_old: state => state.listAData_old,
+  listAData: state => state.listAData,
   listBData: state => state.listBData,
   listCData: state => state.listCData,
   searchData: state => state.searchData,
