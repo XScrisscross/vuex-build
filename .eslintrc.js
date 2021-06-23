@@ -7,14 +7,31 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
+  plugins: ['babel', 'prettier'],
   rules: {
+    // ignore users prettier setting
+    'prettier/prettier': [
+      'off',
+      {
+        trailingComma: 'es5',
+        useTabs: false,
+        tabWidth: 2,
+        printWidth: 300,
+        proseWrap: 'preserve',
+        arrowParens: 'avoid',
+        semi: false,
+        singleQuote: true,
+        jsxBracketSameLine: false,
+        jsxSingleQuote: true,
+      },
+    ],
+    // customize eslint rules
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'vue/no-unused-components': 0, // 允许未使用的组件存在
-    'semi': ['error', 0], // 允许结尾不加分号
-    'no-unused-vars': 0, // 允许未使用的变量存在
-    'no-lonely-if': 0, // 允许if判断单独存在
-    'no-undef': 0, // 允许使用未定义的变量
+    // (调试用)允许未使用的变量存在
+    'no-unused-vars': 0,
+    // (调试用)允许未使用的组件存在
+    'vue/no-unused-components': 0,
   },
   overrides: [
     {

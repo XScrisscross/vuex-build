@@ -34,7 +34,7 @@ export default {
 
   // @api:FETCH_KQ_LISTKA_DATA
   // @params:
-  listKQ_KAInfo: { },
+  listKQ_KAInfo: {},
   // @result:
   listKQ_KAData: {},
 
@@ -113,4 +113,5 @@ export default {
   // @params:
   listJBInfo: {},
   // @result:
-  listJBData: [ ]
+  listJBData: [],
+}

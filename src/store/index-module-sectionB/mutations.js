@@ -1,5 +1,5 @@
-import * as type from './mutations_types'
-import * as server from './server'
+import * as type from './mutations_types';
+import * as server from './server';
 
 export default {
   // globle

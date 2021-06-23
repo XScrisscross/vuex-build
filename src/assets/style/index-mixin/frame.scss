@@ -1,0 +1,35 @@
+// main-var-width
+@mixin outter-frame {
+  padding: 20px;
+}
+
+@mixin flec {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@mixin flmc {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin empty_table {
+  /deep/ .el-table__empty-block {
+    min-height: 200px;
+  }
+
+  /deep/ .el-table__empty-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 105px;
+    width: 135px;
+    background: url('../../assets/img/no-data.png') no-repeat;
+    background-size: contain;
+  }
+}
