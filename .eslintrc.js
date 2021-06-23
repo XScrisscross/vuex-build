@@ -10,7 +10,11 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-unused-vars': [0, { vars: 'all', args: 'after-used' }], // 允许未使用的变量存在
+    'vue/no-unused-components': 0, // 允许未使用的组件存在
+    'semi': ['error', 0], // 允许结尾不加分号
+    'no-unused-vars': 0, // 允许未使用的变量存在
+    'no-lonely-if': 0, // 允许if判断单独存在
+    'no-undef': 0, // 允许使用未定义的变量
   },
   overrides: [
     {

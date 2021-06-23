@@ -48,12 +48,14 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": [
-      "vue-cli-service lint",
-      "git add -A"
+    "*.{js,vue,html}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add -n"
     ],
-    "*.{html,vue,css,sass,scss}": [
-      "yarn stylelint"
+    "*.{css,sass,scss}": [
+      "prettier --write",
+      "git add -n"
     ]
   }
 }
