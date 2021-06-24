@@ -5,6 +5,8 @@ import store from './store'
 
 import 'amfe-flexible'
 
+import './assets/style/index.scss'
+
 Vue.config.productionTip = false
 
 new Vue({

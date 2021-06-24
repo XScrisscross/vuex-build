@@ -1,23 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// import imSA from './index-module-sectionA'
-// import imSB from './index-module-sectionB'
+const files = require.context('./', true, /(^\.\/module-)([a-zA-Z/]+)index\.js$/)
+
+const modules = files.keys().reduce((res, cur) => {
+  const moduleKey = cur.match(/\.\/module-(\S*)\//)[1]
+  const module = files(cur).default
+  return { ...res, [moduleKey]: module }
+}, {})
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: { val: '1', flag: false },
-  getters: {},
-  mutations: {
-    change(state, data) {
-      setTimeout(() => {
-        state.val = data
-      }, 2000)
-      setTimeout(() => {
-        state.flag = true
-      }, 3000)
-    },
-  },
-  actions: {},
-})
+export default new Vuex.Store({ modules })
