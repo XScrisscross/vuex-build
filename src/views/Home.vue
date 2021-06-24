@@ -1,32 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <div class="test"></div>
+    <div class="test">这里 :{{ val }}</div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
     // HelloWorld,
   },
-  //    ds sad
-  data() {
-    return {
-      flag: false,
-    }
-  },
-  methods: {
-    doSomething() {
-      if (this.flag) {
-        let hah
-        console.log(1)
-        window.location = 'daf'
-      }
+  props: {
+    val: {
+      type: String,
+      default: '1',
     },
   },
 }

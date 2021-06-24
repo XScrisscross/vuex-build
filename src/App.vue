@@ -1,12 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/"> Home </router-link> |
-      <router-link to="/about"> About </router-link>
+    <div>
+      <a-home v-if="flag" :val="val" />
     </div>
-    <router-view />
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  name: 'Home',
+  components: {
+    AHome: () => import('./views/Home.vue'),
+  },
+  data() {
+    return {}
+  },
+  computed: mapState({
+    val: state => state.val,
+    flag: state => state.flag,
+  }),
+  mounted() {
+    this.$store.commit('change', '2')
+  },
+}
+</script>
 
 <style lang="scss">
 #app {
