@@ -1,5 +1,3 @@
-import * as imSA from './module-sectionA'
-import * as imSB from './module-sectionB'
+import * as imSA from './modules'
 
 window.Apis_imSA = imSA
-window.Apis_imSB = imSB

@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+// 手动引入
+import demo from './importBySelf/demo'
+
+// 动态引入
 const files = require.context('./', true, /(^\.\/module-)([a-zA-Z/]+)index\.js$/)
 
 const modules = files.keys().reduce((res, cur) => {
@@ -11,4 +15,4 @@ const modules = files.keys().reduce((res, cur) => {
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({ modules })
+export default new Vuex.Store({ ...modules, demo })

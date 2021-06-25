@@ -1,14 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import BasicLayout from '@layout/BasicLayout'
 
 Vue.use(VueRouter)
+
+const files = require.context('./', true, /(^\.\/module)([a-zA-Z/]+)\.js$/)
+
+const modules = files.keys().reduce((res, cur) => {
+  const moduleKey = cur.match(/\.\/module-(\S*)\//)[1]
+  const module = files(cur).default
+  return { ...res, [moduleKey]: module }
+}, {})
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'index',
+    component: BasicLayout,
+    redirect: '/home',
+    children: [],
   },
   {
     path: '/about',
@@ -23,5 +33,11 @@ const routes = [
 const router = new VueRouter({
   routes,
 })
+
+router.beforeEach((to, from, next) => {
+  next()
+})
+
+router.afterEach((to, from) => {})
 
 export default router
