@@ -14,9 +14,9 @@ const utils = files.keys().reduce((res, cur) => {
   const fns = fnkeys.reduce((fnres, key) => {
     if (utilsMountWindow) window.$utlis[key] = modules[key]
     if (utilsMountVue) Vue.$utlis[key] = modules[key]
-    return [...fnres, modules[key]]
-  }, [])
-  return [...res, ...fns]
-}, [])
+    return { ...fnres, [key]: modules[key] }
+  }, {})
+  return { ...res, ...fns }
+}, {})
 
 export default utils

@@ -8,7 +8,7 @@ import demo from './staticModules/demo'
 const files = require.context('./', true, /(^\.\/module-)([a-zA-Z/]+)index\.js$/)
 
 const modules = files.keys().reduce((res, cur) => {
-  const moduleKey = cur.match(/\.\/module-(\S*)\//)[1].toLowerCase()
+  const moduleKey = cur.match(/\.\/module-(\S*)\//)[1]
   const module = files(cur).default
   return { ...res, [moduleKey]: module }
 }, {})
