@@ -2,19 +2,21 @@
 
 **1、思路**
 
-将所有的视图数据，参数列表放到store管理，以最小可操作视图单位为最小单位定义mutation_type，后续渲染驱动store更新，map映射组件视图
+将所有的视图数据，参数列表放到 store 管理，以最小可操作视图单位为最小单位定义 mutation_type，后续渲染驱动 store 更新，map 映射组件视图
 
 **2、文件**
 
 | 文件              | 描述                                     |
 | ----------------- | ---------------------------------------- |
+| **module-.../**   | 动态引入，-后名小写为 namesapce          |
+| **staticMoudle/** | 手动 import 列表                         |
 | **action**        | 异步请求，可能多个，原则以最小视图为基准 |
-| **getter**        | getter映射                               |
+| **getter**        | getter 映射                              |
 | **mutation**      | 更新参数列表和数据视图                   |
 | **mutation_type** | 定义的动作列表                           |
 | **state**         | 状态存储                                 |
 | **server**        | 后台数据处理                             |
-| **index**         | 引入，根据文件夹，名动态创建namesapce    |
+| **index**         | 引入，需 export default 方式             |
 
 **3、问题**
 
@@ -71,4 +73,3 @@
 1）再次确认，既作展示，也做交互，也做依赖的接口，的确存储在一直可以保存的 store 里面比较好
 2）关于有依赖的视图更新，组件在初始化是没办法及时获取到依赖，只执行初始化操作，不执行依赖数据更新操作
 3）范式化函数：initComponent()/updateComponentBy--()/resetInfo()/resetStoreInfo()/resetData()/resetStoreData()/--Handle()/render--()
-

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div>
-      <a-home v-if="flag" :val="val" />
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
     flag: state => state.flag,
   }),
   mounted() {
-    this.$store.commit('change', '2')
+    // this.$store.commit('change', '2')
   },
 }
 </script>

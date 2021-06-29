@@ -1,32 +1,55 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import BasicLayout from '@layout/BasicLayout'
+import BasicLayout from '../layout/BasicLayout.vue'
 
 Vue.use(VueRouter)
 
-const files = require.context('./', true, /(^\.\/module)([a-zA-Z/]+)\.js$/)
+const basicFiles = require.context('./', true, /(^\.\/basicRoutes)([a-zA-Z/]+)\.js$/)
+const dynaFiles = require.context('./', true, /(^\.\/dynaRoutes)([a-zA-Z/]+)\.js$/)
 
-const modules = files.keys().reduce((res, cur) => {
-  const moduleKey = cur.match(/\.\/module-(\S*)\//)[1]
-  const module = files(cur).default
-  return { ...res, [moduleKey]: module }
-}, {})
+const basicMdules = basicFiles.keys().reduce((res, cur) => {
+  const modules = basicFiles(cur).default
+  return [...res, ...modules]
+}, [])
+
+const dynaModules = dynaFiles.keys().reduce((res, cur) => {
+  const moduleKey = cur.match(/\.\/dynaRoutes\/(\S*)\.js$/)[1].toLowerCase()
+  const [routes, layoutComponnet] = dynaFiles(cur).default
+  const modules = {
+    path: '/' + moduleKey,
+    name: moduleKey,
+    component: layoutComponnet || BasicLayout,
+    children: routes,
+  }
+  return [...res, modules]
+}, [])
 
 const routes = [
+  // 二级静态路由
   {
     path: '/',
     name: 'index',
     component: BasicLayout,
     redirect: '/home',
-    children: [],
+    children: [
+      // static import
+    ].concat(basicMdules),
+  },
+  // 二级动态路由
+  ...[
+    // static import
+    ...dynaModules,
+  ],
+  // 基础路由
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue'),
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/error',
+    name: 'error',
+    component: () => import('../views/Error.vue'),
   },
 ]
 

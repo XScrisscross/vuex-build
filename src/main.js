@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import './utils/index'
+
 import 'amfe-flexible'
 
 import './assets/style/index.scss'

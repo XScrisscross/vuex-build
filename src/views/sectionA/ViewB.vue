@@ -1,5 +1,5 @@
 <template>
-  <div>视图B</div>
+  <div>sectionA-视图B</div>
 </template>
 
 <script>
